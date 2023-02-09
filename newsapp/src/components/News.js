@@ -74,7 +74,7 @@ export class News extends Component {
                 return (
                   <div className="col-md-4" key={element.url}>
                     <NewsItem
-                      title={element.title ? element.title.slice(0, 45) : ""}
+                      title={element.title ? element.title : ""}
                       description={
                         element.description
                           ? element.description.slice(0, 88)
