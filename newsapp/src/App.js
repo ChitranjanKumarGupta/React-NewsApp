@@ -1,22 +1,19 @@
 import "./App.css";
-import React, { Component } from "react";
+import React, { useState } from "react";
 import NavBar from "./components/NavBar";
-import { News } from "./components/News";
+import News  from "./components/News";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoadingBar from 'react-top-loading-bar';
 
-export default class App extends Component {
- 
-  apiKey = process.env.REACT_APP_NEWS_API
-  state = {
-    progress: 0
-  }
-  setProgress = (progress) => {
-    this.setState({progress: progress})
-  }
+const App = () => {
 
-  render() {
-    return (
+  const apiKey = process.env.REACT_APP_NEWS_API
+  console.log(apiKey);
+
+  const [progress, setProgress] = useState(0);
+
+
+  return (
       <>
         <Router>
           <NavBar></NavBar>
@@ -24,14 +21,14 @@ export default class App extends Component {
           <LoadingBar
           height={3}
             color="#f11946"
-            progress={this.state.progress}
+            progress={progress}
           />
           <Routes>
             <Route
               exact
               path="/"
               element={
-                <News setProgress={this.setProgress} apiKey={this.apiKey}
+                <News setProgress={setProgress} apiKey={apiKey}
                   key="general"
                   pageSize={6}
                   country="in"
@@ -43,7 +40,7 @@ export default class App extends Component {
               exact
               path="/business"
               element={
-                <News setProgress={this.setProgress} apiKey={this.apiKey}
+                <News setProgress={setProgress} apiKey={apiKey}
                   key="business"
                   pageSize={6}
                   country="in"
@@ -55,7 +52,7 @@ export default class App extends Component {
               exact
               path="/entertainment"
               element={
-                <News setProgress={this.setProgress} apiKey={this.apiKey}
+                <News setProgress={setProgress} apiKey={apiKey}
                   key="entertainment"
                   pageSize={6}
                   country="in"
@@ -67,7 +64,7 @@ export default class App extends Component {
               exact
               path="/general"
               element={
-                <News setProgress={this.setProgress} apiKey={this.apiKey}
+                <News setProgress={setProgress} apiKey={apiKey}
                   key="general"
                   pageSize={6}
                   country="in"
@@ -79,7 +76,7 @@ export default class App extends Component {
               exact
               path="/health"
               element={
-                <News setProgress={this.setProgress} apiKey={this.apiKey}
+                <News setProgress={setProgress} apiKey={apiKey}
                   key="health"
                   pageSize={6}
                   country="in"
@@ -91,7 +88,7 @@ export default class App extends Component {
               exact
               path="/science"
               element={
-                <News setProgress={this.setProgress} apiKey={this.apiKey}
+                <News setProgress={setProgress} apiKey={apiKey}
                   key="science"
                   pageSize={6}
                   country="in"
@@ -103,7 +100,7 @@ export default class App extends Component {
               exact
               path="/sports"
               element={
-                <News setProgress={this.setProgress} apiKey={this.apiKey}
+                <News setProgress={setProgress} apiKey={apiKey}
                   key="sports"
                   pageSize={6}
                   country="in"
@@ -115,7 +112,7 @@ export default class App extends Component {
               exact
               path="/technology"
               element={
-                <News setProgress={this.setProgress} apiKey={this.apiKey}
+                <News setProgress={setProgress} apiKey={apiKey}
                   key="technology"
                   pageSize={6}
                   country="in"
@@ -127,5 +124,7 @@ export default class App extends Component {
         </Router>
       </>
     );
-  }
+  
 }
+
+export default App;
